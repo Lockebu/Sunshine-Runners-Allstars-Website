@@ -113,7 +113,7 @@ body {
 .sun {
   position: absolute;
   font-size: 30px;
-  opacity: 0.15;
+  opacity: 0.35;
   animation: floatSun 7s ease-in-out infinite;
 }
 
@@ -123,6 +123,10 @@ body {
 .sun-4 { top: 50%; right: 18%; animation-delay: 3.5s; font-size: 32px; }
 .sun-5 { top: 80%; left: 45%; animation-delay: 4.5s; font-size: 20px; }
 .sun-6 { top: 20%; right: 30%; animation-delay: 5.5s; font-size: 26px; }
+.sun-7 { top: 72%; right: 5%; animation-delay: 1.8s; font-size: 30px; }
+.sun-8 { top: 8%; left: 40%; animation-delay: 3s; font-size: 22px; }
+.sun-9 { top: 45%; left: 3%; animation-delay: 4s; font-size: 28px; }
+.sun-10 { top: 90%; left: 20%; animation-delay: 5s; font-size: 34px; }
 
 @keyframes floatSun {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -196,6 +200,39 @@ body {
 .member-name {
   margin-bottom: 4px;
   padding-left: 16px;
+}
+
+/* ===== Kalender / Wochenplan ===== */
+.week-plan {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.week-plan th {
+  background-color: #5d4037;
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.week-plan td {
+  border: 1px solid #d7ccc8;
+  padding: 18px 8px;
+  text-align: center;
+  vertical-align: top;
+  min-height: 60px;
+  font-size: 0.9rem;
+  color: #5d4037;
+}
+
+.week-plan td.event {
+  background-color: rgba(255, 204, 128, 0.3);
+  font-weight: bold;
+  color: #4e342e;
 }
 
 /* ===== Footer ===== */
