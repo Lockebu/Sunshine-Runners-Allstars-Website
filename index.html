@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunshine Runners Allstars</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sonnen im Hintergrund -->
+  <div class="sun-deco" aria-hidden="true">
+    <span class="sun sun-1">☀️</span>
+    <span class="sun sun-2">☀️</span>
+    <span class="sun sun-3">☀️</span>
+    <span class="sun sun-4">☀️</span>
+    <span class="sun sun-5">☀️</span>
+    <span class="sun sun-6">☀️</span>
+  </div>
+
+  <!-- Hero / Club-Bild Platzhalter -->
+  <header class="hero">
+    <div class="hero-placeholder">
+      <span class="hero-icon">🐴</span>
+      <p>Hier kommt euer Club-Bild hin!</p>
+      <h1>Sunshine Runners Allstars</h1>
+    </div>
+  </header>
+
+  <!-- Braune Menüleiste -->
+  <nav class="navbar">
+    <a href="#startseite" class="nav-link active" data-page="startseite">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Startseite</span>
+    </a>
+    <a href="#mitglieder" class="nav-link" data-page="mitglieder">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      <span>Mitglieder</span>
+    </a>
+    <a href="#regeln" class="nav-link" data-page="regeln">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      <span>Regeln</span>
+    </a>
+    <a href="#infos" class="nav-link" data-page="infos">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <span>Infos</span>
+    </a>
+    <a href="#termine" class="nav-link" data-page="termine">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+      <span>Termine</span>
+    </a>
+  </nav>
+
+  <!-- Hauptinhalt -->
+  <main class="content">
+
+    <!-- Startseite -->
+    <section id="startseite" class="page active">
+      <h2>Willkommen bei den Sunshine Runners Allstars!</h2>
+      <p>Wir sind ein freundlicher Star Stable Online Club, der zusammen reitet, Abenteuer erlebt und jede Menge Spaß hat!</p>
+    </section>
+
+    <!-- Mitglieder -->
+    <section id="mitglieder" class="page">
+      <h2>Unsere Mitglieder</h2>
+      <p class="subtitle">(26)</p>
+
+      <h3 class="rank-title">Club Gründerin</h3>
+      <p class="member-name">Stacy Purpleglass</p>
+
+      <h3 class="rank-title">Clubleiter</h3>
+
+      <h3 class="rank-title">Reitlehrer</h3>
+
+      <h3 class="rank-title">Meister</h3>
+
+      <h3 class="rank-title">Erfahrene Reiter</h3>
+
+      <h3 class="rank-title">Schüler</h3>
+
+      <h3 class="rank-title">Stallmädchen</h3>
+
+      <h3 class="rank-title">Mitglieder</h3>
+      <p class="member-name">Bianca Blueberryflower</p>
+      <p class="member-name">Paulina Graycat</p>
+      <p class="member-name">Fiona Coverluck</p>
+    </section>
+
+    <!-- Regeln -->
+    <section id="regeln" class="page">
+      <h2>Clubregeln</h2>
+    </section>
+
+    <!-- Infos -->
+    <section id="infos" class="page">
+      <h2>Infos</h2>
+    </section>
+
+    <!-- Termine -->
+    <section id="termine" class="page">
+      <h2>Termine & Events</h2>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Sunshine Runners Allstars &mdash; Star Stable Online Club ☀️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
