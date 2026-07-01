@@ -176,6 +176,18 @@ body {
   margin: 20px 0;
 }
 
+.page ol {
+  padding-left: 24px;
+  color: #5d4037;
+}
+
+.page ol li {
+  font-size: 1.15rem;
+  font-weight: bold;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
 /* ===== Mitglieder-Seite ===== */
 .subtitle {
   font-weight: bold;
