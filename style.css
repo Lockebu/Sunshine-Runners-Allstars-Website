@@ -55,7 +55,6 @@ body {
   width: 100%;
   max-height: 400px;
   overflow: hidden;
-  background: linear-gradient(135deg, #f8bbd0 0%, #ffccbc 50%, #fff9c4 100%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -328,7 +327,7 @@ body {
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .hero {
-    height: 220px;
+    max-height: none;
   }
 
   .hero-placeholder h1 {
