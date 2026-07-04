@@ -84,33 +84,44 @@ body {
   }
 }
 
-/* Kleine Sterne die aufleuchten */
-.hero::after {
-  content: '⭐';
+/* Realistische leuchtende Sterne */
+.hero::after,
+.hero::before {
+  content: '★';
   position: absolute;
-  bottom: 12px;
-  right: 15px;
-  font-size: 18px;
-  animation: twinkle 2.5s ease-in-out infinite alternate;
+  font-size: 22px;
+  background: linear-gradient(135deg, #fff8b0, #f5c842, #d4a017, #f5c842, #fff8b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 4px rgba(255, 200, 50, 0.8)) drop-shadow(0 0 8px rgba(255, 180, 0, 0.4));
   pointer-events: none;
   z-index: 2;
+}
+
+.hero::after {
+  bottom: 12px;
+  right: 15px;
+  font-size: 20px;
+  animation: star-shine 3s ease-in-out infinite;
 }
 
 .hero::before {
-  content: '⭐';
-  position: absolute;
-  bottom: 15px;
+  bottom: 14px;
   left: 15px;
-  font-size: 14px;
-  animation: twinkle 3s ease-in-out infinite alternate-reverse;
-  pointer-events: none;
-  z-index: 2;
+  font-size: 16px;
+  animation: star-shine 3.5s ease-in-out infinite 0.5s;
 }
 
-@keyframes twinkle {
-  0% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.1); }
-  100% { opacity: 0.5; transform: scale(0.9); }
+@keyframes star-shine {
+  0%, 100% { 
+    opacity: 0.6;
+    filter: drop-shadow(0 0 3px rgba(255, 200, 50, 0.5)) drop-shadow(0 0 6px rgba(255, 180, 0, 0.2));
+  }
+  50% { 
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 50, 1)) drop-shadow(0 0 16px rgba(255, 180, 0, 0.6)) drop-shadow(0 0 24px rgba(255, 220, 100, 0.3));
+  }
 }
 
 .hero-icon {
