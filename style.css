@@ -8,6 +8,10 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5d0d0;
+  background-image: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   color: #5d4037;
   min-height: 100vh;
   overflow-x: hidden;
@@ -142,41 +146,6 @@ body {
   border-bottom: 3px solid #ffcc80;
 }
 
-/* ===== Sonnen-Deko im Hintergrund ===== */
-.sun-deco {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.sun {
-  position: absolute;
-  font-size: 30px;
-  opacity: 0.35;
-  animation: floatSun 7s ease-in-out infinite;
-}
-
-.sun-1 { top: 12%; left: 5%; animation-delay: 0s; font-size: 36px; }
-.sun-2 { top: 35%; right: 8%; animation-delay: 1.2s; font-size: 28px; }
-.sun-3 { top: 60%; left: 12%; animation-delay: 2.5s; font-size: 24px; }
-.sun-4 { top: 50%; right: 18%; animation-delay: 3.5s; font-size: 32px; }
-.sun-5 { top: 80%; left: 45%; animation-delay: 4.5s; font-size: 20px; }
-.sun-6 { top: 20%; right: 30%; animation-delay: 5.5s; font-size: 26px; }
-.sun-7 { top: 72%; right: 5%; animation-delay: 1.8s; font-size: 30px; }
-.sun-8 { top: 8%; left: 40%; animation-delay: 3s; font-size: 22px; }
-.sun-9 { top: 45%; left: 3%; animation-delay: 4s; font-size: 28px; }
-.sun-10 { top: 90%; left: 20%; animation-delay: 5s; font-size: 34px; }
-
-@keyframes floatSun {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(15deg); }
-}
-
 /* ===== Hauptinhalt ===== */
 .content {
   max-width: 800px;
@@ -271,7 +240,7 @@ body {
 
 .outfit-image {
   flex-shrink: 0;
-  background-color: #f5d0d0;
+  background-color: transparent;
   border-radius: 10px;
 }
 
