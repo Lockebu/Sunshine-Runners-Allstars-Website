@@ -12,15 +12,24 @@ html {
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5d0d0;
-  background-image: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   color: #5d4037;
   min-height: 100vh;
   overflow-x: hidden;
   overscroll-behavior: none;
   position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 
 /* ===== Titelleiste ===== */
