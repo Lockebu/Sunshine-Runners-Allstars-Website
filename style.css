@@ -303,12 +303,6 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
-  body {
-    background-attachment: scroll;
-    background-size: auto 100vh;
-    background-repeat: no-repeat;
-  }
-
   .hero {
     max-height: none;
   }
