@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5d0d0;
@@ -15,6 +19,7 @@ body {
   color: #5d4037;
   min-height: 100vh;
   overflow-x: hidden;
+  overscroll-behavior: none;
   position: relative;
 }
 
@@ -298,6 +303,12 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+    background-size: auto 100vh;
+    background-repeat: no-repeat;
+  }
+
   .hero {
     max-height: none;
   }
