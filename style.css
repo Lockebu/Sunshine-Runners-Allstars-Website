@@ -7,12 +7,8 @@
 
 html {
   overscroll-behavior: none;
-  /* Layered background: main image + intentional brown stripe at bottom
-     so any overscroll reveals a designed stripe instead of a random color. */
-  background:
-    linear-gradient(180deg, rgba(93,64,55,0) 0%, rgba(93,64,55,0) 82%, rgba(93,64,55,1) 82%, rgba(93,64,55,1) 100%),
-    url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg') center/cover fixed;
-  background-color: #5d4037;
+  background: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg') center/cover no-repeat fixed;
+  background-color: transparent;
 }
 
 body {
