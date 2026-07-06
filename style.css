@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5d0d0;
+  background-color: transparent;
   color: #5d4037;
   min-height: 100vh;
   overflow-x: hidden;
