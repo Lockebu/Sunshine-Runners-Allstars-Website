@@ -79,18 +79,49 @@
 
       <p>Was uns ausmacht: Eine herzliche Gemeinschaft in Star Stable Online. Werde Teil unseres SSO Clubs und erlebe Jorvik mit uns!</p>
 
-      <p><strong>Neuigkeiten:</strong></p>
-      <p>Jetzt gehört auch das Pferde leveln beim Clubtreffen am Samstag dazu!</p>
+      <div class="section">
+        <div class="section-header">
+          <strong class="section-title">Neuigkeiten</strong>
+          <button class="toggle-btn" data-target="news" aria-expanded="false">▸</button>
+        </div>
+        <div id="news" class="section-content">
+          <p>Jetzt gehört auch das Pferde leveln beim Clubtreffen am Samstag dazu!</p>
+        </div>
+      </div>
 
-      <p><strong>Fotos:</strong></p>
+      <div class="section">
+        <div class="section-header">
+          <strong class="section-title">Fotos</strong>
+          <button class="toggle-btn" data-target="photos" aria-expanded="false">▸</button>
+        </div>
+        <div id="photos" class="section-content">
+          <p class="media-date">Datum: <span id="yesterday-date"></span></p>
+          <div class="photo-gallery">
+            <img src="CT Bild 1.1.jpeg" alt="Club Treffen Foto 1" class="media-thumb">
+            <img src="CT Bild 1.2.jpeg" alt="Club Treffen Foto 2" class="media-thumb">
+            <img src="CT Bild 1.3.jpeg" alt="Club Treffen Foto 3" class="media-thumb">
+            <img src="CT Bild 1.4.jpeg" alt="Club Treffen Foto 4" class="media-thumb">
+            <img src="CT Bild 1.5.jpeg" alt="Club Treffen Foto 5" class="media-thumb">
+            <img src="CT Bild 1.6.jpeg" alt="Club Treffen Foto 6" class="media-thumb">
+          </div>
+        </div>
+      </div>
 
-      <p><strong>Videos:</strong></p>
-      <div class="video-gallery">
-        <video controls preload="metadata" playsinline>
-          <source src="Dressur%20Video%201.mp4" type="video/mp4">
-          Ihr Browser unterstützt das Video-Tag nicht.
-        </video>
-        <p class="video-caption">Unser erstes Club-Video: Dressur-Training mit den Sunshine Runners Allstars.</p>
+      <div class="section">
+        <div class="section-header">
+          <strong class="section-title">Videos</strong>
+          <button class="toggle-btn" data-target="videos" aria-expanded="false">▸</button>
+        </div>
+        <div id="videos" class="section-content">
+          <p class="media-date">Datum: <span id="yesterday-date-v"></span></p>
+          <div class="video-gallery">
+            <video controls preload="metadata" playsinline>
+              <source src="Dressur%20Video%201.mp4" type="video/mp4">
+              Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+            <p class="video-caption">Unser erstes Club-Video: Dressur-Training mit den Sunshine Runners Allstars.</p>
+          </div>
+        </div>
       </div>
     </section>
 
