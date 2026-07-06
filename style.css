@@ -46,15 +46,7 @@ body::before {
   margin-bottom: 0;
 }
 
-.club-logo {
-  width: 64px;
-  border-radius: 8px;
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-}
+/* club-logo removed: favicon handled via <link rel="icon"> in the document head */
 
 .title-bar h1 {
   font-size: 2rem;
