@@ -48,8 +48,12 @@ body::before {
 
 .club-logo {
   width: 64px;
-  margin-right: 12px;
   border-radius: 8px;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
 }
 
 .title-bar h1 {
