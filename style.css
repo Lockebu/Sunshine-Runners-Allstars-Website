@@ -197,6 +197,27 @@ body::before {
   margin-bottom: 12px;
 }
 
+.video-gallery {
+  margin-top: 12px;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.video-gallery video {
+  width: 100%;
+  max-width: 720px;
+  border: 4px solid rgba(93, 64, 55, 0.35);
+  border-radius: 14px;
+  background-color: #000;
+}
+
+.video-caption {
+  color: #4e342e;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .page hr {
   border: none;
   border-top: 2px solid #d7ccc8;
