@@ -37,10 +37,19 @@ body::before {
   width: 100%;
   background-color: #5d4037;
   padding: 14px 20px 4px 20px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   position: relative;
   z-index: 10;
   margin-bottom: 0;
+}
+
+.club-logo {
+  width: 64px;
+  margin-right: 12px;
+  border-radius: 8px;
 }
 
 .title-bar h1 {
