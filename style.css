@@ -275,8 +275,7 @@ body::before {
 .section-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
 }
 
 .section-title {
@@ -286,14 +285,11 @@ body::before {
 .toggle-btn {
   background: none;
   border: none;
-  font-size: 1.2rem;
-  transform-origin: center;
-  transition: transform 0.35s ease;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 2px 6px;
+  margin-left: 6px;
   cursor: pointer;
-}
-
-.toggle-btn.rotate {
-  transform: rotate(90deg);
 }
 
 .section-content {

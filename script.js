@@ -27,11 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   // Toggle sections
   document.querySelectorAll('.toggle-btn').forEach(btn => {
+    // initialize glyph
+    btn.textContent = '▾';
     btn.addEventListener('click', () => {
       const target = document.getElementById(btn.dataset.target);
       const open = target.classList.toggle('open');
-      btn.classList.toggle('rotate', open);
       btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? '▴' : '▾';
     });
   });
 
