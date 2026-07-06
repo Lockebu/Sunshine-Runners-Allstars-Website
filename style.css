@@ -7,6 +7,14 @@
 
 html {
   overscroll-behavior: none;
+  /* Make the page background the actual page background image so
+     mobile overscroll always reveals the same image instead of a
+     blank color. */
+  background-image: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #5d4037;
 }
 
 body {
@@ -19,18 +27,7 @@ body {
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg');
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-}
+/* background image moved to `html` to avoid overscroll color flashes */
 
 /* ===== Titelleiste ===== */
 .title-bar {
