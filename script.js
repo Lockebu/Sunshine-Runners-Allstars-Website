@@ -47,6 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (d1) d1.textContent = dstr;
   if (d2) d2.textContent = dstr;
 
+  const newsDateEl = document.getElementById('news-date');
+  if (newsDateEl) {
+    const today = new Date();
+    const mondayOffset = (today.getDay() + 6) % 7;
+    const currentMonday = new Date(today);
+    currentMonday.setDate(today.getDate() - mondayOffset);
+    const fridayBeforeLast = new Date(currentMonday);
+    fridayBeforeLast.setDate(currentMonday.getDate() - 10);
+    newsDateEl.textContent = fridayBeforeLast.toLocaleDateString('de-DE', opt);
+  }
+
   // Lightbox for photos
   function openLightbox(contentEl) {
     const lb = document.createElement('div');

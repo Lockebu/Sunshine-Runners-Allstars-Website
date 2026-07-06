@@ -279,13 +279,14 @@ body::before {
 }
 
 .section-title {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
+  color: #4e342e;
 }
 
 .toggle-btn {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   line-height: 1;
   padding: 2px 6px;
   margin-left: 6px;
