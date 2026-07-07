@@ -4,7 +4,7 @@ Willkommen bei den **Sunshine Runners Allstars**! Wir sind ein freundlicher SSO 
 
 ## 🌐 Unsere Website
 
-**[➡️ Sunshine Runners Allstars Website besuchen](https://lockebu.github.io/Sunshine-Runners-Allstars-Website/)**
+**[➡️ Sunshine Runners Allstars besuchen](https://lockebu.github.io/Sunshine-Runners-Allstars-Website/)**
 
 > 🎉 Unsere Seite ist jetzt bei Google auffindbar!
 
