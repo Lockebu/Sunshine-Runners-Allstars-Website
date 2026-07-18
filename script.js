@@ -50,12 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const newsDateEl = document.getElementById('news-date');
   if (newsDateEl) {
     const today = new Date();
+    const dayOfWeek = today.getDay();
+    const tuesdayOffset = (dayOfWeek + 5) % 7;
+    const currentTuesday = new Date(today);
+    currentTuesday.setDate(today.getDate() - tuesdayOffset);
+    newsDateEl.textContent = currentTuesday.toLocaleDateString('de-DE', opt);
+  }
+
+  const newsDateOldEl = document.getElementById('news-date-old');
+  if (newsDateOldEl) {
+    const today = new Date();
     const mondayOffset = (today.getDay() + 6) % 7;
     const currentMonday = new Date(today);
     currentMonday.setDate(today.getDate() - mondayOffset);
     const fridayBeforeLast = new Date(currentMonday);
     fridayBeforeLast.setDate(currentMonday.getDate() - 10);
-    newsDateEl.textContent = fridayBeforeLast.toLocaleDateString('de-DE', opt);
+    newsDateOldEl.textContent = fridayBeforeLast.toLocaleDateString('de-DE', opt);
   }
 
   // Lightbox for photos
