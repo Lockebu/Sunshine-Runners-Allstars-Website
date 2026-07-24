@@ -102,3 +102,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// ===== VISITOR COUNTER WITH COOKIES =====
+document.addEventListener('DOMContentLoaded', () => {
+  // Cookie handling functions
+  function setCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let c = cookies[i].trim();
+      if (c.indexOf(nameEQ) === 0) {
+        return c.substring(nameEQ.length);
+      }
+    }
+    return null;
+  }
+
+  // Initialize or update visitor count
+  let visitorCount = getCookie('visitorCount');
+  if (visitorCount === null) {
+    visitorCount = 1;
+  } else {
+    visitorCount = parseInt(visitorCount) + 1;
+  }
+  setCookie('visitorCount', visitorCount);
+
+  // Display visitor count
+  const counterElement = document.getElementById('visitor-count');
+  if (counterElement) {
+    counterElement.textContent = visitorCount;
+  }
+});
+

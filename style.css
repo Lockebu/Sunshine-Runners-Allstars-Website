@@ -462,6 +462,19 @@ body {
   border-top: 2px solid #d7ccc8;
 }
 
+/* ===== Visitor Counter ===== */
+.visitor-counter {
+  margin-top: 12px !important;
+  font-size: 0.85rem !important;
+  color: #a1887f !important;
+  font-weight: 500;
+}
+
+#visitor-count {
+  font-weight: bold;
+  color: #5d4037;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .hero {
