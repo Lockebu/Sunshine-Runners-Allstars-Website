@@ -121,9 +121,11 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
       <span>Kalender</span>
     </a>
+    <a href="#bewerbung" class="nav-link" data-page="bewerbung">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm0-4H8V8h8v2z"/></svg>
+      <span>Bewerbung</span>
+    </a>
   </nav>
-
-  <!-- Hauptinhalt -->
   <main class="content">
 
     <!-- Startseite -->
@@ -332,6 +334,117 @@
 
       <p><strong>Am Sonntag:</strong></p>
       <p>Wir treffen uns beim Championat mit Cluboutfit und Clubpferd. Danach reiten wir in die Clubhalle und üben wunderschöne und coole Dressur-Tricks. Dann reiten wir zum Abschluss das Championat.</p>
+    </section>
+
+    <!-- Bewerbung -->
+    <section id="bewerbung" class="page">
+      <h2>Bewerbung</h2>
+      
+      <form id="application-form" class="application-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="be432205-f769-43c4-9ee0-628ca5a87172">
+        <input type="hidden" name="subject" value="Neue Bewerbung für Sunshine Runners Allstars">
+
+        <div class="form-group">
+          <label>Dein In-Game Name (Vorname + Nachname):</label>
+          <input type="text" id="app-name" name="Name" required
+            maxlength="40"
+            pattern="[A-Za-z]{2,15}\s[A-Za-z]{4,20}"
+            title="Bitte gib deinen SSO-Namen ein. Nur Buchstaben, keine Zahlen oder Sonderzeichen."
+            placeholder="Vorname Nachname"
+            autocomplete="off"
+            onpaste="return false"
+            ondrop="return false">
+          <small class="form-hint">Nur Buchstaben erlaubt. Format: Vorname Nachname</small>
+        </div>
+
+        <div class="form-group">
+          <label>Welches Level bist du (mit deinem Charakter)?</label>
+          <select name="Level" required>
+            <option value="">-- Bitte wählen --</option>
+            <option value="Level 1-5">Level 1-5</option>
+            <option value="Level 5-10">Level 5-10</option>
+            <option value="Level 10-15">Level 10-15</option>
+            <option value="Level 15-20">Level 15-20</option>
+            <option value="Noch höher">Noch höher</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Bist du ein StarRider?</label>
+          <select name="StarRider" required>
+            <option value="">-- Bitte wählen --</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein, und ich werde es mir auch nie kaufen">Nein, und ich werde es mir auch nie kaufen</option>
+            <option value="Nein, aber ich werde es mir kaufen">Nein, aber ich werde es mir kaufen</option>
+            <option value="Ja, Lifetime">Ja, Lifetime</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Auf welchem Server bist du?</label>
+          <select name="Server" required>
+            <option value="">-- Bitte wählen --</option>
+            <option value="Winter Star (Server 1)">Winter Star (Server 1)</option>
+            <option value="Autumn Star (Server 2)">Autumn Star (Server 2)</option>
+            <option value="Chocolate Mountain (Server 3)">Chocolate Mountain (Server 3)</option>
+            <option value="Strawberry Kingdom (Server 4)">Strawberry Kingdom (Server 4)</option>
+            <option value="Cloudy Rock (Server 5)">Cloudy Rock (Server 5)</option>
+            <option value="Cape Coconut (Server 6)">Cape Coconut (Server 6)</option>
+            <option value="Blackberry Galaxy (Server 7)">Blackberry Galaxy (Server 7)</option>
+            <option value="Kiwi Galaxy (Server 8)">Kiwi Galaxy (Server 8)</option>
+            <option value="Raindrop Rose (Server 9)">Raindrop Rose (Server 9)</option>
+            <option value="Foggy Spring (Server 10)">Foggy Spring (Server 10)</option>
+            <option value="Icy Palace (Server 11)">Icy Palace (Server 11)</option>
+            <option value="Marmelade Cosmos (Server 12)">Marmelade Cosmos (Server 12)</option>
+            <option value="Magnolia Tower (Server 13)">Magnolia Tower (Server 13)</option>
+            <option value="Cherry Swamp (Server 14)">Cherry Swamp (Server 14)</option>
+            <option value="Jelly Lake (Server 15)">Jelly Lake (Server 15)</option>
+            <option value="Raindrop Farm (Server 16)">Raindrop Farm (Server 16)</option>
+            <option value="Ice Cream Mountain (Server 17)">Ice Cream Mountain (Server 17)</option>
+            <option value="Rainbow Galaxy (Server 18)">Rainbow Galaxy (Server 18)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Bist du bereit, dir das ClubPferd/ClubOutfit zu holen?</label>
+          <select name="ClubOutfit" required>
+            <option value="">-- Bitte wählen --</option>
+            <option value="Ja, bin ich">Ja, bin ich</option>
+            <option value="Ich besitze es bereits">Ich besitze es bereits</option>
+            <option value="Ja, ich habe schon ein paar Dinge">Ja, ich habe schon ein paar Dinge</option>
+            <option value="Nein, ich werde es mir nie holen">Nein, ich werde es mir nie holen</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Warum möchtest du uns beitreten?</label>
+          <select name="Grund" required>
+            <option value="">-- Bitte wählen --</option>
+            <option value="Ich suche einen freundlichen Club">Ich suche einen freundlichen Club</option>
+            <option value="Ich möchte neue Freunde finden">Ich möchte neue Freunde finden</option>
+            <option value="Ich möchte gemeinsam reiten und leveln">Ich möchte gemeinsam reiten und leveln</option>
+            <option value="Ich möchte bei Clubtreffen mitmachen">Ich möchte bei Clubtreffen mitmachen</option>
+            <option value="Ich möchte Dressur-Tricks lernen">Ich möchte Dressur-Tricks lernen</option>
+            <option value="Ich möchte Championats zusammen reiten">Ich möchte Championats zusammen reiten</option>
+            <option value="Meine Freundin ist im Club">Meine Freundin ist im Club</option>
+            <option value="Ich wurde eingeladen">Ich wurde eingeladen</option>
+            <option value="Ich habe den Club in Jorvik gesehen">Ich habe den Club in Jorvik gesehen</option>
+            <option value="Ich habe die Website gefunden">Ich habe die Website gefunden</option>
+            <option value="Ich möchte Teil einer Gemeinschaft sein">Ich möchte Teil einer Gemeinschaft sein</option>
+            <option value="Ich liebe Star Stable und suche Gleichgesinnte">Ich liebe Star Stable und suche Gleichgesinnte</option>
+          </select>
+        </div>
+
+        <div class="form-group checkbox">
+          <input type="checkbox" id="app-rules" name="Regeln_akzeptiert" value="Ja" required>
+          <label for="app-rules">Ich habe die Clubregeln gelesen und akzeptiere sie.</label>
+        </div>
+
+        <button type="submit" class="submit-btn">Bewerbung abschicken</button>
+      </form>
+      <div id="success-message" class="success-message" style="display: none;">
+        ✅ Deine Bewerbung wurde erfolgreich eingereicht! Wir melden uns in Kürze bei dir.
+      </div>
     </section>
 
   </main>

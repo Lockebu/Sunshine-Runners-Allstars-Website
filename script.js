@@ -140,3 +140,121 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// ===== BEWERBUNGS-FORMULAR mit Web3Forms =====
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('application-form');
+  const nameInput = document.getElementById('app-name');
+  
+  // SSO-Name Validierung
+  if (nameInput) {
+    // Verhindere Einfügen
+    nameInput.addEventListener('paste', (e) => e.preventDefault());
+    nameInput.addEventListener('drop', (e) => e.preventDefault());
+    
+    // Nur Buchstaben und ein Leerzeichen erlauben
+    nameInput.addEventListener('input', () => {
+      nameInput.value = nameInput.value.replace(/[^A-Za-zÄÖÜäöü ]/g, '');
+      // Maximal ein Leerzeichen erlauben
+      const parts = nameInput.value.split(' ').filter(p => p !== '');
+      if (parts.length > 2) {
+        nameInput.value = parts[0] + ' ' + parts[1];
+      }
+    });
+  }
+  
+  // Prüft ob der Name dem SSO-Format entspricht
+  function isValidSSOName(name) {
+    const trimmed = name.trim();
+    const parts = trimmed.split(' ');
+    
+    // Muss genau 2 Teile haben (Vorname + Nachname)
+    if (parts.length !== 2) return false;
+    
+    const vorname = parts[0];
+    const nachname = parts[1];
+    
+    // Vorname: 2-15 Buchstaben, erster Buchstabe groß
+    if (vorname.length < 2 || vorname.length > 15) return false;
+    if (vorname[0] !== vorname[0].toUpperCase()) return false;
+    
+    // Nachname: 4-20 Buchstaben, erster Buchstabe groß
+    if (nachname.length < 4 || nachname.length > 20) return false;
+    if (nachname[0] !== nachname[0].toUpperCase()) return false;
+    
+    // Keine Zahlen oder Sonderzeichen
+    if (!/^[A-Za-z]+$/.test(vorname)) return false;
+    if (!/^[A-Za-z]+$/.test(nachname)) return false;
+    
+    // Beleidigungsfilter - blockiert unangemessene Wörter im Namen
+    const blocked = [
+      'doof', 'dumm', 'blod', 'blöd', 'idiot', 'stupid', 'hate', 'hass',
+      'ugly', 'fat', 'dick', 'dumb', 'loser', 'noob', 'suck', 'fool',
+      'kill', 'dead', 'die', 'poop', 'poo', 'butt', 'ass', 'damn',
+      'hell', 'crap', 'shut', 'fake', 'liar', 'lueg', 'lüg', 'stink',
+      'hure', 'fick', 'fuck', 'shit', 'bitch', 'slut', 'whore',
+      'nazi', 'arsch', 'wichs', 'penis', 'vagina', 'sex', 'porn',
+      'kack', 'scheiss', 'scheiß', 'mist', 'trottel', 'depp',
+      'hurensohn', 'missgeburt', 'bastard', 'vollidiot', 'spast',
+      'behindert', 'mongo', 'schwul', 'gay', 'lesbe', 'neger',
+      'find', 'your', 'you', 'dich', 'euch', 'ihr', 'mich',
+      'haha', 'lol', 'lmao', 'rofl', 'omg', 'wtf', 'stfu'
+    ];
+    
+    const lowerFull = (vorname + nachname).toLowerCase();
+    for (const word of blocked) {
+      if (lowerFull.includes(word)) return false;
+    }
+    
+    return true;
+  }
+  
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Name validieren
+      if (nameInput && !isValidSSOName(nameInput.value)) {
+        alert('❌ Bitte gib einen gültigen SSO-Namen ein. Vorname und Nachname, nur Buchstaben, erster Buchstabe groß.');
+        nameInput.focus();
+        return;
+      }
+      
+      // Prüfe ob alle Dropdowns ausgefüllt sind
+      const selects = form.querySelectorAll('select[required]');
+      for (const select of selects) {
+        if (select.value === '') {
+          const label = select.closest('.form-group').querySelector('label').textContent;
+          alert('❌ Bitte fülle noch aus: ' + label);
+          select.focus();
+          return;
+        }
+      }
+      
+      const formData = new FormData(form);
+      
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          form.style.display = 'none';
+          document.getElementById('success-message').style.display = 'block';
+          
+          setTimeout(() => {
+            form.reset();
+            form.style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+          }, 3000);
+        } else {
+          alert('❌ Es gab einen Fehler beim Senden. Bitte versuche es später erneut.');
+        }
+      })
+      .catch(error => {
+        alert('❌ Verbindungsfehler. Bitte überprüfe deine Internetverbindung.');
+      });
+    });
+  }
+});
+
