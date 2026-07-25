@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const counter = document.getElementById('visitor-counter');
     if (counter) {
       const span = document.getElementById('visitor-count');
-      if (span) span.textContent = readVisitorCookie('visitorCount') || '0';
+      if (span) span.textContent = (window.sharedVisitorCount != null) ? window.sharedVisitorCount : '…';
       counter.style.display = 'block';
     }
   }
@@ -171,25 +171,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startVisitorCounter() {
-    let visitorCount = getCookie('visitorCount');
-    if (visitorCount === null) {
-      visitorCount = 1;
-    } else {
-      visitorCount = parseInt(visitorCount) + 1;
-    }
-    setCookie('visitorCount', visitorCount);
-    const counterElement = document.getElementById('visitor-count');
-    if (counterElement) {
-      counterElement.textContent = visitorCount;
-    }
-    // Zähler bleibt versteckt – wird nur mit Passwort im Namensfeld sichtbar
+    // Gemeinsamer Online-Zähler für alle Besucher (geräteübergreifend)
+    // Pro Browser-Sitzung nur einmal hochzählen, danach nur den Stand abrufen
+    const alreadyCounted = sessionStorage.getItem('visitCounted') === 'true';
+    const NAMESPACE = 'sunshine-runners-allstars';
+    const KEY = 'visits';
+    const baseUrl = 'https://api.counterapi.dev/v1';
+    const endpoint = alreadyCounted
+      ? `${baseUrl}/${NAMESPACE}/${KEY}`
+      : `${baseUrl}/${NAMESPACE}/${KEY}/up`;
+
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.count === 'number') {
+          window.sharedVisitorCount = data.count;
+          if (!alreadyCounted) sessionStorage.setItem('visitCounted', 'true');
+          const span = document.getElementById('visitor-count');
+          const counter = document.getElementById('visitor-counter');
+          // Falls der Zähler bereits sichtbar ist, Wert aktualisieren
+          if (span && counter && counter.style.display !== 'none') {
+            span.textContent = data.count;
+          }
+        }
+      })
+      .catch(() => {
+        window.sharedVisitorCount = null;
+      });
+    // Zähler bleibt versteckt – wird nur über die geheime Klick-Reihenfolge sichtbar
   }
+
+  // Gemeinsamer Online-Besucherzähler immer starten (anonym, keine Cookies nötig)
+  startVisitorCounter();
 
   // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
   const cookieChoice = getCookie('cookiesAccepted') || localStorage.getItem('cookiesAccepted');
 
   if (cookieChoice === 'true') {
-    startVisitorCounter();
+    // bereits akzeptiert
   } else if (cookieChoice === 'false') {
     // Cookies abgelehnt → nichts tun
   } else {
@@ -201,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setCookie('cookiesAccepted', 'true', 365);
       localStorage.setItem('cookiesAccepted', 'true');
       banner.style.display = 'none';
-      startVisitorCounter();
     });
   }
 
