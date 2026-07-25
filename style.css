@@ -389,8 +389,25 @@ body {
 }
 
 .member-name {
-  margin-bottom: 4px;
-  padding-left: 16px;
+  margin-bottom: 0;
+  padding: 8px 16px;
+  border-bottom: 2px solid #d7ccc8;
+}
+
+.member-name:has(.nickname) {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.member-name.no-line {
+  border-bottom: none;
+}
+
+.nickname {
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 20%;
 }
 
 /* ===== Outfit Section ===== */
