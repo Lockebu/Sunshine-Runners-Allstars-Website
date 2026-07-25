@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (counterElement) {
       counterElement.textContent = visitorCount;
     }
+    // Zähler bleibt versteckt – wird nur mit Passwort im Namensfeld sichtbar
   }
 
   // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
@@ -177,6 +178,30 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // SSO-Name Validierung
   if (nameInput) {
+    // Geheimes Passwort: wird es im Namensfeld eingegeben, erscheint der Besucherzähler
+    const SECRET_PASSWORD = 'lockebuundderclubheistsunshinerunnersallstars';
+    function readCookie(name) {
+      const nameEQ = name + '=';
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const c = cookies[i].trim();
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+      }
+      return null;
+    }
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim().toLowerCase() === SECRET_PASSWORD) {
+        const counter = document.getElementById('visitor-counter');
+        if (counter) {
+          const count = readCookie('visitorCount') || '0';
+          const span = document.getElementById('visitor-count');
+          if (span) span.textContent = count;
+          counter.style.display = 'block';
+        }
+        nameInput.value = '';
+      }
+    });
+
     // Verhindere Einfügen
     nameInput.addEventListener('paste', (e) => e.preventDefault());
     nameInput.addEventListener('drop', (e) => e.preventDefault());
