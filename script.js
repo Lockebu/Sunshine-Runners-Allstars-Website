@@ -4,71 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const pages = document.querySelectorAll('.page');
 
-  // Geheime Klick-Reihenfolge zum Anzeigen des Besucherzählers
-  const secretSequence = ['startseite', 'regeln', 'kalender', 'bewerbung', 'infos', 'mitglieder', 'startseite'];
-  let secretProgress = [];
-
-  function readVisitorCookie(name) {
-    const nameEQ = name + '=';
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const c = cookies[i].trim();
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
-    }
-    return null;
-  }
-
-  function showVisitorCounter() {
-    const counter = document.getElementById('visitor-counter');
-    const span = document.getElementById('visitor-count');
-    if (!counter) return;
-    counter.style.display = 'block';
-    if (window.sharedVisitorCount != null) {
-      if (span) span.textContent = window.sharedVisitorCount;
-      return;
-    }
-    // Letzten bekannten Wert zeigen, während frisch geladen wird
-    const cached = localStorage.getItem('lastVisitorCount');
-    if (span) span.textContent = cached != null ? cached : '…';
-    // Frischen Wert holen (nur /up funktioniert wegen CORS)
-    fetch('https://api.counterapi.dev/v1/sunshine-runners-allstars/visits/up')
-      .then(res => res.json())
-      .then(data => {
-        if (data && typeof data.count === 'number') {
-          window.sharedVisitorCount = data.count;
-          localStorage.setItem('lastVisitorCount', data.count);
-          if (span) span.textContent = data.count;
-        }
-      })
-      .catch(() => {
-        if (span && cached == null) span.textContent = 'nicht verfügbar';
-      });
-  }
-
-  function trackSecret(page) {
-    // Doppeltes Tippen auf denselben Bereich (z.B. Ghost-Click am Handy) ignorieren
-    if (secretProgress.length > 0 && secretProgress[secretProgress.length - 1] === page) {
-      return;
-    }
-    // Rollenden Verlauf führen (nur so lang wie die Geheim-Sequenz)
-    secretProgress.push(page);
-    if (secretProgress.length > secretSequence.length) {
-      secretProgress.shift();
-    }
-    // Prüfen, ob der Verlauf exakt der Geheim-Sequenz entspricht
-    if (secretProgress.length === secretSequence.length &&
-        secretProgress.every((p, i) => p === secretSequence[i])) {
-      showVisitorCounter();
-      secretProgress = [];
-    }
-  }
-
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetPage = link.getAttribute('data-page');
-
-      trackSecret(targetPage);
 
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
@@ -163,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ===== COOKIE BANNER & VISITOR COUNTER =====
+// ===== COOKIE BANNER =====
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
@@ -187,41 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return null;
   }
-
-  function startVisitorCounter() {
-    // Gemeinsamer Online-Zähler für alle Besucher (geräteübergreifend)
-    // Pro Browser-Sitzung nur einmal hochzählen
-    const alreadyCounted = sessionStorage.getItem('visitCounted') === 'true';
-    if (alreadyCounted) {
-      // Nicht erneut hochzählen; letzten bekannten Wert übernehmen
-      const cached = localStorage.getItem('lastVisitorCount');
-      if (cached != null) window.sharedVisitorCount = parseInt(cached);
-      return;
-    }
-    // Nur der /up-Endpunkt erlaubt CORS von GitHub Pages
-    fetch('https://api.counterapi.dev/v1/sunshine-runners-allstars/visits/up')
-      .then(res => res.json())
-      .then(data => {
-        if (data && typeof data.count === 'number') {
-          window.sharedVisitorCount = data.count;
-          localStorage.setItem('lastVisitorCount', data.count);
-          sessionStorage.setItem('visitCounted', 'true');
-          const span = document.getElementById('visitor-count');
-          const counter = document.getElementById('visitor-counter');
-          if (span && counter && counter.style.display !== 'none') {
-            span.textContent = data.count;
-          }
-        }
-      })
-      .catch(() => {
-        const cached = localStorage.getItem('lastVisitorCount');
-        window.sharedVisitorCount = cached != null ? parseInt(cached) : null;
-      });
-    // Zähler bleibt versteckt – wird nur über die geheime Klick-Reihenfolge sichtbar
-  }
-
-  // Gemeinsamer Online-Besucherzähler immer starten (anonym, keine Cookies nötig)
-  startVisitorCounter();
 
   // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
   const cookieChoice = getCookie('cookiesAccepted') || localStorage.getItem('cookiesAccepted');
