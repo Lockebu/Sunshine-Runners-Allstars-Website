@@ -634,6 +634,64 @@ body {
   margin-top: 20px;
 }
 
+/* ===== Cookie Banner ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #4e342e;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  z-index: 9999;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-banner p {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 0.95rem;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cookie-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cookie-btn.accept {
+  background-color: #ffcc80;
+  color: #4e342e;
+}
+
+.cookie-btn.accept:hover {
+  background-color: #ffd54f;
+}
+
+.cookie-btn.decline {
+  background-color: transparent;
+  color: #d7ccc8;
+  border: 1px solid #d7ccc8;
+}
+
+.cookie-btn.decline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .hero {

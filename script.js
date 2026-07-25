@@ -102,14 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ===== VISITOR COUNTER WITH COOKIES =====
+// ===== COOKIE BANNER & VISITOR COUNTER =====
 document.addEventListener('DOMContentLoaded', () => {
-  // Cookie handling functions
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
   function setCookie(name, value, days = 365) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
   }
 
   function getCookie(name) {
@@ -124,19 +127,46 @@ document.addEventListener('DOMContentLoaded', () => {
     return null;
   }
 
-  // Initialize or update visitor count
-  let visitorCount = getCookie('visitorCount');
-  if (visitorCount === null) {
-    visitorCount = 1;
-  } else {
-    visitorCount = parseInt(visitorCount) + 1;
+  function startVisitorCounter() {
+    let visitorCount = getCookie('visitorCount');
+    if (visitorCount === null) {
+      visitorCount = 1;
+    } else {
+      visitorCount = parseInt(visitorCount) + 1;
+    }
+    setCookie('visitorCount', visitorCount);
+    const counterElement = document.getElementById('visitor-count');
+    if (counterElement) {
+      counterElement.textContent = visitorCount;
+    }
   }
-  setCookie('visitorCount', visitorCount);
 
-  // Display visitor count
-  const counterElement = document.getElementById('visitor-count');
-  if (counterElement) {
-    counterElement.textContent = visitorCount;
+  // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
+  const cookieChoice = getCookie('cookiesAccepted');
+
+  if (cookieChoice === 'true') {
+    // Cookies akzeptiert → Zähler starten
+    startVisitorCounter();
+  } else if (cookieChoice === 'false') {
+    // Cookies abgelehnt → nichts tun
+  } else {
+    // Noch keine Wahl → Banner anzeigen
+    if (banner) banner.style.display = 'flex';
+  }
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => {
+      setCookie('cookiesAccepted', 'true', 365);
+      banner.style.display = 'none';
+      startVisitorCounter();
+    });
+  }
+
+  if (declineBtn) {
+    declineBtn.addEventListener('click', () => {
+      setCookie('cookiesAccepted', 'false', 365);
+      banner.style.display = 'none';
+    });
   }
 });
 
