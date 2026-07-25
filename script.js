@@ -190,7 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return null;
     }
     nameInput.addEventListener('input', () => {
-      if (nameInput.value.trim().toLowerCase() === SECRET_PASSWORD) {
+      const entered = nameInput.value.replace(/\s/g, '').toLowerCase();
+      if (entered === SECRET_PASSWORD) {
         const counter = document.getElementById('visitor-counter');
         if (counter) {
           const count = readCookie('visitorCount') || '0';
