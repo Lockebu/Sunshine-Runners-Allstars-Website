@@ -20,10 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showVisitorCounter() {
     const counter = document.getElementById('visitor-counter');
-    if (counter) {
-      const span = document.getElementById('visitor-count');
-      if (span) span.textContent = (window.sharedVisitorCount != null) ? window.sharedVisitorCount : '…';
-      counter.style.display = 'block';
+    const span = document.getElementById('visitor-count');
+    if (!counter) return;
+    counter.style.display = 'block';
+    if (window.sharedVisitorCount != null) {
+      if (span) span.textContent = window.sharedVisitorCount;
+    } else {
+      if (span) span.textContent = '…';
+      // Wert direkt nachladen, falls er noch nicht da ist
+      fetch('https://api.counterapi.dev/v1/sunshine-runners-allstars/visits')
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            window.sharedVisitorCount = data.count;
+            if (span) span.textContent = data.count;
+          } else if (span) {
+            span.textContent = 'nicht verfügbar';
+          }
+        })
+        .catch(() => { if (span) span.textContent = 'nicht verfügbar'; });
     }
   }
 
