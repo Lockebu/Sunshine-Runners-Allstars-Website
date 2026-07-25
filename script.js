@@ -4,10 +4,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const pages = document.querySelectorAll('.page');
 
+  // Geheime Klick-Reihenfolge zum Anzeigen des Besucherzählers
+  const secretSequence = ['startseite', 'regeln', 'kalender', 'bewerbung', 'infos', 'mitglieder', 'startseite'];
+  let secretProgress = [];
+
+  function readVisitorCookie(name) {
+    const nameEQ = name + '=';
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const c = cookies[i].trim();
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+    }
+    return null;
+  }
+
+  function showVisitorCounter() {
+    const counter = document.getElementById('visitor-counter');
+    if (counter) {
+      const span = document.getElementById('visitor-count');
+      if (span) span.textContent = readVisitorCookie('visitorCount') || '0';
+      counter.style.display = 'block';
+    }
+  }
+
+  function trackSecret(page) {
+    const nextIndex = secretProgress.length;
+    if (page === secretSequence[nextIndex]) {
+      secretProgress.push(page);
+      if (secretProgress.length === secretSequence.length) {
+        showVisitorCounter();
+        secretProgress = [];
+      }
+    } else if (page === secretSequence[0]) {
+      // Neustart der Sequenz
+      secretProgress = [page];
+    } else {
+      secretProgress = [];
+    }
+  }
+
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetPage = link.getAttribute('data-page');
+
+      trackSecret(targetPage);
 
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
@@ -178,31 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // SSO-Name Validierung
   if (nameInput) {
-    // Geheimes Passwort: wird es im Namensfeld eingegeben, erscheint der Besucherzähler
-    const SECRET_PASSWORD = 'lockebuundderclubheistsunshinerunnersallstars';
-    function readCookie(name) {
-      const nameEQ = name + '=';
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const c = cookies[i].trim();
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
-      }
-      return null;
-    }
-    nameInput.addEventListener('input', () => {
-      const entered = nameInput.value.replace(/\s/g, '').toLowerCase();
-      if (entered.includes(SECRET_PASSWORD)) {
-        const counter = document.getElementById('visitor-counter');
-        if (counter) {
-          const count = readCookie('visitorCount') || '0';
-          const span = document.getElementById('visitor-count');
-          if (span) span.textContent = count;
-          counter.style.display = 'block';
-        }
-        nameInput.value = '';
-      }
-    });
-
     // Verhindere Einfügen
     nameInput.addEventListener('paste', (e) => e.preventDefault());
     nameInput.addEventListener('drop', (e) => e.preventDefault());
