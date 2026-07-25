@@ -28,17 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function trackSecret(page) {
-    const nextIndex = secretProgress.length;
-    if (page === secretSequence[nextIndex]) {
-      secretProgress.push(page);
-      if (secretProgress.length === secretSequence.length) {
-        showVisitorCounter();
-        secretProgress = [];
-      }
-    } else if (page === secretSequence[0]) {
-      // Neustart der Sequenz
-      secretProgress = [page];
-    } else {
+    // Doppeltes Tippen auf denselben Bereich (z.B. Ghost-Click am Handy) ignorieren
+    if (secretProgress.length > 0 && secretProgress[secretProgress.length - 1] === page) {
+      return;
+    }
+    // Rollenden Verlauf führen (nur so lang wie die Geheim-Sequenz)
+    secretProgress.push(page);
+    if (secretProgress.length > secretSequence.length) {
+      secretProgress.shift();
+    }
+    // Prüfen, ob der Verlauf exakt der Geheim-Sequenz entspricht
+    if (secretProgress.length === secretSequence.length &&
+        secretProgress.every((p, i) => p === secretSequence[i])) {
+      showVisitorCounter();
       secretProgress = [];
     }
   }
