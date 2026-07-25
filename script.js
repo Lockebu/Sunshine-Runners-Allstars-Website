@@ -142,21 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
-  const cookieChoice = getCookie('cookiesAccepted');
+  const cookieChoice = getCookie('cookiesAccepted') || localStorage.getItem('cookiesAccepted');
 
   if (cookieChoice === 'true') {
-    // Cookies akzeptiert → Zähler starten
     startVisitorCounter();
   } else if (cookieChoice === 'false') {
     // Cookies abgelehnt → nichts tun
   } else {
-    // Noch keine Wahl → Banner anzeigen
     if (banner) banner.style.display = 'flex';
   }
 
   if (acceptBtn) {
     acceptBtn.addEventListener('click', () => {
       setCookie('cookiesAccepted', 'true', 365);
+      localStorage.setItem('cookiesAccepted', 'true');
       banner.style.display = 'none';
       startVisitorCounter();
     });
@@ -165,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (declineBtn) {
     declineBtn.addEventListener('click', () => {
       setCookie('cookiesAccepted', 'false', 365);
+      localStorage.setItem('cookiesAccepted', 'false');
       banner.style.display = 'none';
     });
   }
