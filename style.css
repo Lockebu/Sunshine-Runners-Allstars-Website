@@ -300,7 +300,7 @@ body {
 
 .section-content.open {
   opacity: 1;
-  max-height: 1200px;
+  max-height: 5000px;
 }
 
 .media-date {
