@@ -102,59 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ===== COOKIE BANNER =====
-document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('cookie-accept');
-  const declineBtn = document.getElementById('cookie-decline');
-
-  function setCookie(name, value, days = 365) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-  }
-
-  function getCookie(name) {
-    const nameEQ = name + "=";
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      let c = cookies[i].trim();
-      if (c.indexOf(nameEQ) === 0) {
-        return c.substring(nameEQ.length);
-      }
-    }
-    return null;
-  }
-
-  // Prüfe ob Cookies bereits akzeptiert/abgelehnt wurden
-  const cookieChoice = getCookie('cookiesAccepted') || localStorage.getItem('cookiesAccepted');
-
-  if (cookieChoice === 'true') {
-    // bereits akzeptiert
-  } else if (cookieChoice === 'false') {
-    // Cookies abgelehnt → nichts tun
-  } else {
-    if (banner) banner.style.display = 'flex';
-  }
-
-  if (acceptBtn) {
-    acceptBtn.addEventListener('click', () => {
-      setCookie('cookiesAccepted', 'true', 365);
-      localStorage.setItem('cookiesAccepted', 'true');
-      banner.style.display = 'none';
-    });
-  }
-
-  if (declineBtn) {
-    declineBtn.addEventListener('click', () => {
-      setCookie('cookiesAccepted', 'false', 365);
-      localStorage.setItem('cookiesAccepted', 'false');
-      banner.style.display = 'none';
-    });
-  }
-});
-
 // ===== BEWERBUNGS-FORMULAR mit Web3Forms =====
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('application-form');
