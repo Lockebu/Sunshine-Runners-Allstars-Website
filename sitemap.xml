@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/Club%20Logo.png</image:loc>
+      <image:title>Logo der Sunshine Runners Allstars</image:title>
+      <image:caption>Logo des Star Stable Online Clubs Sunshine Runners Allstars</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/sunshine%20runners%20allstars%20braune%20%C3%BCberschrift.jpeg</image:loc>
+      <image:title>Sunshine Runners Allstars Schriftzug</image:title>
+      <image:caption>Logo und Schriftzug des Star Stable Online Clubs Sunshine Runners Allstars</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/sch%C3%B6nes%20Club%20Bild%202.jpeg</image:loc>
+      <image:title>Sunshine Runners Allstars Clubbild</image:title>
+      <image:caption>Mitglieder der Sunshine Runners Allstars reiten gemeinsam durch Jorvik in Star Stable Online</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/collage.jpeg</image:loc>
+      <image:title>Foto-Collage der Sunshine Runners Allstars</image:title>
+      <image:caption>Foto-Collage mit Momenten der Sunshine Runners Allstars beim gemeinsamen Reiten</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/on%20starshine%20ranch.jpeg</image:loc>
+      <image:title>Sunshine Runners Allstars auf der Starshine Ranch</image:title>
+      <image:caption>Die Sunshine Runners Allstars versammeln sich mit ihren Pferden auf der Starshine Ranch in Jorvik</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/CT.jpeg</image:loc>
+      <image:title>Clubtreffen beim Championat</image:title>
+      <image:caption>Clubtreffen der Sunshine Runners Allstars beim Championat in Silverglade</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/After%20goldblatt%20champi.jpeg</image:loc>
+      <image:title>Nach dem Goldblatt-Championat</image:title>
+      <image:caption>Mitglieder der Sunshine Runners Allstars nach dem gewonnenen Goldblatt-Championat</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lockebu.github.io/Sunshine-Runners-Allstars-Website/Club%20outfit%20sunshine%20runners%20allstars.png</image:loc>
+      <image:title>Club-Outfit der Sunshine Runners Allstars</image:title>
+      <image:caption>Das Club-Outfit der Sunshine Runners Allstars in Star Stable Online</image:caption>
+    </image:image>
   </url>
 </urlset>
