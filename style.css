@@ -744,3 +744,120 @@ body {
     padding: 0 12px;
   }
 }
+
+/* ===== Event-Seite ===== */
+.event-card {
+  background-color: transparent;
+  border: 2px solid #bcaaa4;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+
+.event-card-title {
+  color: #4e342e;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.event-subtitle {
+  color: #5d4037;
+  margin: 18px 0 6px 0;
+  font-size: 1.1rem;
+}
+
+.event-card p {
+  margin-bottom: 12px;
+}
+
+.event-card p:last-child {
+  margin-bottom: 0;
+}
+
+.event-highlight {
+  margin-top: 22px !important;
+  font-size: 1.1rem !important;
+  color: #4e342e !important;
+  font-weight: bold;
+}
+
+/* Zettel für Bibi's Tipps */
+.note-paper {
+  position: relative;
+  background-color: #ede0c4;
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.30) 0%, rgba(150,110,70,0.14) 100%),
+    repeating-linear-gradient(
+      transparent,
+      transparent 37px,
+      rgba(120, 90, 60, 0.28) 37px,
+      rgba(120, 90, 60, 0.28) 38px
+    );
+  border-radius: 4px;
+  padding: 46px 34px 40px 34px;
+  box-shadow: 0 10px 24px rgba(93, 64, 55, 0.28);
+  transform: rotate(-1.2deg);
+  max-width: 540px;
+  min-height: 500px;
+  margin: 50px auto;
+  overflow: visible;
+}
+
+/* Washi-Tape: rosa gestreift, diagonal über die obere rechte Ecke */
+.washi-tape {
+  position: absolute;
+  top: 34px;
+  right: -46px;
+  width: 210px;
+  height: 40px;
+  transform: rotate(45deg);
+  background-image: repeating-linear-gradient(
+    45deg,
+    #f6b8bd 0px,
+    #f6b8bd 11px,
+    #fde3e5 11px,
+    #fde3e5 22px
+  );
+  opacity: 0.9;
+  -webkit-clip-path: polygon(
+    0% 0%, 13% 11%, 1% 22%, 11% 33%, 2% 45%, 14% 55%, 3% 68%, 12% 79%, 1% 90%, 5% 100%,
+    100% 100%, 88% 88%, 99% 77%, 87% 66%, 98% 54%, 86% 43%, 97% 31%, 89% 20%, 99% 9%, 95% 0%
+  );
+  clip-path: polygon(
+    0% 0%, 13% 11%, 1% 22%, 11% 33%, 2% 45%, 14% 55%, 3% 68%, 12% 79%, 1% 90%, 5% 100%,
+    100% 100%, 88% 88%, 99% 77%, 87% 66%, 98% 54%, 86% 43%, 97% 31%, 89% 20%, 99% 9%, 95% 0%
+  );
+}
+
+.note-title {
+  color: #5d4037;
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: 1.7rem;
+  margin: 0 0 12px 0;
+  line-height: 38px;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-list li {
+  color: #5d4037;
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: 1.05rem;
+  line-height: 38px;
+  margin: 0;
+  padding-left: 22px;
+  position: relative;
+}
+
+.note-list li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: #8d6e63;
+}
+
