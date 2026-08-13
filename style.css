@@ -5,20 +5,43 @@
   box-sizing: border-box;
 }
 
+/* Für Screenreader & Suchmaschinen sichtbar, optisch versteckt */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   overscroll-behavior: none;
-  background: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg') center/cover no-repeat fixed;
+  background: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg') center/cover no-repeat scroll;
   background-color: #5d4037;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: transparent;
   color: #5d4037;
   min-height: 100vh;
   overflow-x: hidden;
   overscroll-behavior: none;
   position: relative;
+}
+
+@supports (background-attachment: fixed) {
+  html {
+    background-attachment: fixed;
+  }
 }
 
 /* background image moved to `html` to avoid overscroll color flashes */
@@ -123,6 +146,7 @@ body {
   gap: 0;
   background-color: #5d4037;
   padding: 0;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -397,10 +421,16 @@ body {
   border-bottom: 2px solid #d7ccc8;
 }
 
-.member-name:has(.nickname) {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
+.member-name {
+  display: block;
+}
+
+@supports selector(:has(*)) {
+  .member-name:has(.nickname) {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
 }
 
 .member-name.no-line {
