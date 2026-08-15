@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Prüft ob der Name dem SSO-Format entspricht
   function isValidSSOName(name) {
-    const trimmed = name.trim();
-    const parts = trimmed.split(' ');
+    // Leerzeichen vorne/hinten und doppelte Leerzeichen ignorieren
+    const parts = name.trim().split(/\s+/).filter(p => p !== '');
     
     // Muss genau 2 Teile haben (Vorname + Nachname)
     if (parts.length !== 2) return false;
