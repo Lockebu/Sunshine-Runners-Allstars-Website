@@ -123,11 +123,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (active === founderMode) return;
     founderMode = active;
 
+    // Native Browser-Validierung des Namensfelds im Gründer-Modus abschalten,
+    // damit der Code trotz SSO-Pattern abgeschickt werden kann.
+    if (nameInput) {
+      if (founderMode) {
+        nameInput.dataset.pattern = nameInput.getAttribute('pattern') || '';
+        nameInput.removeAttribute('pattern');
+        nameInput.removeAttribute('required');
+      } else {
+        if (nameInput.dataset.pattern) nameInput.setAttribute('pattern', nameInput.dataset.pattern);
+        nameInput.setAttribute('required', '');
+      }
+    }
+
     // Alle normalen Fragen ein-/ausblenden (alles außer Namensfeld und Gründer-Feld)
     form.querySelectorAll('.form-group').forEach(group => {
       if (group === founderGroup) return;
       if (group.contains(nameInput)) return; // Namensfeld bleibt sichtbar
-      group.style.display = founderMode ? 'none' : '';
+      const disable = founderMode;
+      group.style.display = disable ? 'none' : '';
+      // Pflichtfelder im Gründer-Modus deaktivieren, sonst blockt der Browser das Absenden
+      group.querySelectorAll('[required]').forEach(el => {
+        if (disable) {
+          el.dataset.wasRequired = '1';
+          el.removeAttribute('required');
+        } else if (el.dataset.wasRequired) {
+          el.setAttribute('required', '');
+          delete el.dataset.wasRequired;
+        }
+      });
     });
 
     if (founderGroup) founderGroup.style.display = founderMode ? 'block' : 'none';
