@@ -106,21 +106,53 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('application-form');
   const nameInput = document.getElementById('app-name');
-  
+
+  // ===== Gründer-Modus (Geheimcode) =====
+  const FOUNDER_CODE = 'SunshineRunnersAllstarsCode';
+  const founderGroup = document.getElementById('founder-group');
+  const founderLink = document.getElementById('founder-link');
+  let founderMode = false;
+
+  // WhatsApp-Kanal Link Prüfung
+  function isValidWhatsAppChannelLink(url) {
+    return /^https:\/\/(www\.)?whatsapp\.com\/channel\/[A-Za-z0-9]{10,}$/.test(url.trim());
+  }
+
+  function updateFounderMode() {
+    const active = nameInput && nameInput.value.trim() === FOUNDER_CODE;
+    if (active === founderMode) return;
+    founderMode = active;
+
+    // Alle normalen Fragen ein-/ausblenden (alles außer Namensfeld und Gründer-Feld)
+    form.querySelectorAll('.form-group').forEach(group => {
+      if (group === founderGroup) return;
+      if (group.contains(nameInput)) return; // Namensfeld bleibt sichtbar
+      group.style.display = founderMode ? 'none' : '';
+    });
+
+    if (founderGroup) founderGroup.style.display = founderMode ? 'block' : 'none';
+  }
+
   // SSO-Name Validierung
   if (nameInput) {
     // Verhindere Einfügen
     nameInput.addEventListener('paste', (e) => e.preventDefault());
     nameInput.addEventListener('drop', (e) => e.preventDefault());
-    
+
     // Nur Buchstaben und ein Leerzeichen erlauben
     nameInput.addEventListener('input', () => {
+      // Erst prüfen, ob der Gründer-Code getippt wurde
+      if (nameInput.value.trim() === FOUNDER_CODE) {
+        updateFounderMode();
+        return;
+      }
       nameInput.value = nameInput.value.replace(/[^A-Za-zÄÖÜäöü ]/g, '');
       // Maximal ein Leerzeichen erlauben
       const parts = nameInput.value.split(' ').filter(p => p !== '');
       if (parts.length > 2) {
         nameInput.value = parts[0] + ' ' + parts[1];
       }
+      updateFounderMode();
     });
   }
   
@@ -173,7 +205,45 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
+      // ===== Gründer-Modus: nur WhatsApp-Kanal Link senden =====
+      if (founderMode) {
+        if (!founderLink || !isValidWhatsAppChannelLink(founderLink.value)) {
+          alert('❌ Bitte gib einen gültigen WhatsApp-Kanal-Link ein (https://whatsapp.com/channel/...).');
+          if (founderLink) founderLink.focus();
+          return;
+        }
+
+        const founderData = new FormData();
+        founderData.append('access_key', form.querySelector('input[name="access_key"]').value);
+        founderData.append('subject', 'WhatsApp-Kanal Link (Gründerin)');
+        founderData.append('WhatsApp_Kanal', founderLink.value.trim());
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: founderData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            form.style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            setTimeout(() => {
+              form.reset();
+              updateFounderMode();
+              form.style.display = 'block';
+              document.getElementById('success-message').style.display = 'none';
+            }, 3000);
+          } else {
+            alert('❌ Es gab einen Fehler beim Senden. Bitte versuche es später erneut.');
+          }
+        })
+        .catch(error => {
+          alert('❌ Verbindungsfehler. Bitte überprüfe deine Internetverbindung.');
+        });
+        return;
+      }
+
       // Name validieren
       if (nameInput && !isValidSSOName(nameInput.value)) {
         alert('❌ Bitte gib einen gültigen SSO-Namen ein. Vorname und Nachname, nur Buchstaben, erster Buchstabe groß.');
