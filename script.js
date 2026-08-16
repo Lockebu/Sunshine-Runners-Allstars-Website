@@ -184,45 +184,40 @@ document.addEventListener('DOMContentLoaded', () => {
   function isValidSSOName(name) {
     // Leerzeichen vorne/hinten und doppelte Leerzeichen ignorieren
     const parts = name.trim().split(/\s+/).filter(p => p !== '');
-    
+
     // Muss genau 2 Teile haben (Vorname + Nachname)
     if (parts.length !== 2) return false;
-    
+
     const vorname = parts[0];
     const nachname = parts[1];
-    
+
+    // Erlaubte Buchstaben (inkl. Umlaute und ß)
+    const letters = /^[A-Za-zÄÖÜäöüß]+$/;
+
     // Vorname: 2-15 Buchstaben, erster Buchstabe groß
     if (vorname.length < 2 || vorname.length > 15) return false;
     if (vorname[0] !== vorname[0].toUpperCase()) return false;
-    
-    // Nachname: 4-20 Buchstaben, erster Buchstabe groß
-    if (nachname.length < 4 || nachname.length > 20) return false;
+
+    // Nachname: 2-20 Buchstaben, erster Buchstabe groß
+    if (nachname.length < 2 || nachname.length > 20) return false;
     if (nachname[0] !== nachname[0].toUpperCase()) return false;
-    
-    // Keine Zahlen oder Sonderzeichen
-    if (!/^[A-Za-z]+$/.test(vorname)) return false;
-    if (!/^[A-Za-z]+$/.test(nachname)) return false;
-    
-    // Beleidigungsfilter - blockiert unangemessene Wörter im Namen
+
+    // Nur Buchstaben (keine Zahlen oder Sonderzeichen)
+    if (!letters.test(vorname)) return false;
+    if (!letters.test(nachname)) return false;
+
+    // Beleidigungsfilter: nur eindeutige Schimpfwörter, als GANZES Wort
+    // (kein Teilwort-Treffer mehr, damit normale Namen nie fälschlich blockiert werden)
     const blocked = [
-      'doof', 'dumm', 'blod', 'blöd', 'idiot', 'stupid', 'hate', 'hass',
-      'ugly', 'fat', 'dick', 'dumb', 'loser', 'noob', 'suck', 'fool',
-      'kill', 'dead', 'die', 'poop', 'poo', 'butt', 'ass', 'damn',
-      'hell', 'crap', 'shut', 'fake', 'liar', 'lueg', 'lüg', 'stink',
-      'hure', 'fick', 'fuck', 'shit', 'bitch', 'slut', 'whore',
-      'nazi', 'arsch', 'wichs', 'penis', 'vagina', 'sex', 'porn',
-      'kack', 'scheiss', 'scheiß', 'mist', 'trottel', 'depp',
-      'hurensohn', 'missgeburt', 'bastard', 'vollidiot', 'spast',
-      'behindert', 'mongo', 'schwul', 'gay', 'lesbe', 'neger',
-      'find', 'your', 'you', 'dich', 'euch', 'ihr', 'mich',
-      'haha', 'lol', 'lmao', 'rofl', 'omg', 'wtf', 'stfu'
+      'fuck', 'shit', 'bitch', 'fick', 'hure', 'hurensohn',
+      'nazi', 'nigger', 'neger', 'porn', 'penis', 'vagina',
+      'wichser', 'arschloch', 'missgeburt', 'vollidiot'
     ];
-    
-    const lowerFull = (vorname + nachname).toLowerCase();
+    const lowerParts = [vorname.toLowerCase(), nachname.toLowerCase()];
     for (const word of blocked) {
-      if (lowerFull.includes(word)) return false;
+      if (lowerParts.includes(word)) return false;
     }
-    
+
     return true;
   }
   
