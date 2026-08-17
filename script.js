@@ -108,6 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('app-name');
 
   // ===== Gründer-Modus (Geheimcode) =====
+  // Vorübergehend deaktiviert (WhatsApp-Kanal Link wurde bereits übermittelt).
+  // Zum Reaktivieren einfach FOUNDER_ENABLED auf true setzen.
+  const FOUNDER_ENABLED = false;
   const FOUNDER_CODE = 'SunshineRunnersAllstarsCode';
   const founderGroup = document.getElementById('founder-group');
   const founderLink = document.getElementById('founder-link');
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateFounderMode() {
-    const active = nameInput && nameInput.value.trim() === FOUNDER_CODE;
+    const active = FOUNDER_ENABLED && nameInput && nameInput.value.trim() === FOUNDER_CODE;
     if (active === founderMode) return;
     founderMode = active;
 
@@ -166,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Nur Buchstaben und ein Leerzeichen erlauben
     nameInput.addEventListener('input', () => {
       // Erst prüfen, ob der Gründer-Code getippt wurde
-      if (nameInput.value.trim() === FOUNDER_CODE) {
+      if (FOUNDER_ENABLED && nameInput.value.trim() === FOUNDER_CODE) {
         updateFounderMode();
         return;
       }
