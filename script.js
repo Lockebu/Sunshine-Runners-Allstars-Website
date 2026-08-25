@@ -100,6 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Video is embedded directly in the page; no extra behavior needed.
 
+  // Mitglieder-Detailbereich aus-/einklappen
+  document.querySelectorAll('#mitglieder .member-name.expandable').forEach(row => {
+    const btn = row.querySelector('.member-toggle');
+    const detail = row.nextElementSibling;
+    if (!btn || !detail || !detail.classList.contains('member-detail')) return;
+    if (row.querySelector('.nickname')) row.classList.add('has-nickname');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = detail.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? '▴' : '▾';
+    });
+    row.addEventListener('click', () => btn.click());
+  });
+
 });
 
 // ===== BEWERBUNGS-FORMULAR mit Web3Forms =====

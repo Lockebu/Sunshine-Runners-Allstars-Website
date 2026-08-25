@@ -439,6 +439,108 @@ body {
   margin-right: 20%;
 }
 
+/* Mitglieder mit ausklappbarem Detailbereich */
+.member-name.expandable {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.member-name.expandable .nickname {
+  margin-left: auto;
+  margin-right: 20%;
+}
+
+.member-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #8d6e63;
+  padding: 0 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.member-name.expandable:not(.has-nickname) .member-toggle {
+  margin-left: 0;
+}
+
+.member-name.expandable.has-nickname .member-toggle {
+  margin-left: 0;
+}
+
+.member-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  border-bottom: 2px solid #d7ccc8;
+}
+
+.member-detail.open {
+  max-height: 1200px;
+  opacity: 1;
+}
+
+.member-detail-inner {
+  padding: 14px 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.member-detail-inner p {
+  color: #5d4037;
+  margin: 0 0 10px;
+}
+
+.member-detail-img {
+  max-width: 140px;
+  width: 40%;
+  border-radius: 12px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.member-detail-text {
+  flex: 1;
+  min-width: 160px;
+}
+
+.member-quote {
+  font-style: italic;
+  color: #6b4f46;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.member-quote::before {
+  content: "\201E";
+}
+
+.member-quote::after {
+  content: "\201C";
+}
+
+.member-channel-link {
+  display: inline-block;
+  color: #1a237e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.member-channel-link:hover {
+  text-decoration: underline;
+}
+
 /* ===== Outfit Section ===== */
 .outfit-section {
   display: flex;
