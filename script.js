@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form.reset();
             form.style.display = 'block';
             document.getElementById('success-message').style.display = 'none';
-          }, 3000);
+          }, 240000);
         } else {
           alert('❌ Es gab einen Fehler beim Senden. Bitte versuche es später erneut.');
         }
