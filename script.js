@@ -34,8 +34,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = target.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
       btn.textContent = open ? '▴' : '▾';
+      if (open && target.id === 'news') {
+        try {
+          localStorage.setItem('sunshine-news-read-2026-10-04', 'true');
+        } catch (error) {
+          // Keep the indicator visible if browser storage is unavailable.
+        }
+        const indicator = document.getElementById('news-unread-indicator');
+        if (indicator) indicator.hidden = true;
+      }
     });
   });
+
+  const newsIndicator = document.getElementById('news-unread-indicator');
+  if (newsIndicator) {
+    try {
+      newsIndicator.hidden = localStorage.getItem('sunshine-news-read-2026-10-04') === 'true';
+    } catch (error) {
+      newsIndicator.hidden = false;
+    }
+  }
 
   // Set yesterday date
   const y = new Date();

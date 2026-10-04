@@ -302,6 +302,24 @@ body {
   color: #4e342e;
 }
 
+.news-unread-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d32f2f;
+  flex: 0 0 10px;
+}
+
+.news-unread-indicator[hidden] {
+  display: none;
+}
+
+.news-divider {
+  border: none;
+  border-top: 2px solid #d7ccc8;
+  margin: 14px 0;
+}
+
 .toggle-btn {
   background: none;
   border: none;
@@ -887,6 +905,13 @@ body {
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 1.3rem;
+}
+
+.event-status {
+  padding: 10px 14px;
+  border-left: 4px solid #8d6e63;
+  background-color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
 }
 
 .event-subtitle {
