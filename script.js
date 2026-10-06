@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = open ? '▴' : '▾';
       if (open && target.id === 'news') {
         try {
-          localStorage.setItem('sunshine-news-read-2026-10-06', 'true');
+          localStorage.setItem('sunshine-news-read', target.dataset.latest || '');
         } catch (error) {
           // Keep the indicator visible if browser storage is unavailable.
         }
@@ -47,9 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const newsIndicator = document.getElementById('news-unread-indicator');
-  if (newsIndicator) {
+  const newsContent = document.getElementById('news');
+  if (newsIndicator && newsContent) {
+    const latest = newsContent.dataset.latest || '';
     try {
-      newsIndicator.hidden = localStorage.getItem('sunshine-news-read-2026-10-06') === 'true';
+      newsIndicator.hidden = localStorage.getItem('sunshine-news-read') === latest;
     } catch (error) {
       newsIndicator.hidden = false;
     }
