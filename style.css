@@ -140,7 +140,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 0;
-  background-color: #000000;
+  background-color: #1c1c1c;
   padding: 0;
   position: -webkit-sticky;
   position: sticky;
@@ -168,7 +168,7 @@ body {
 }
 
 .nav-link:hover {
-  background-color: #6d4c41;
+  background-color: #333333;
   transform: translateY(-2px);
 }
 
