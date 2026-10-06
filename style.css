@@ -25,8 +25,8 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overscroll-behavior: none;
-  background: url('website%20hintergrund%20Sunshine%20runners%20allstars.jpeg') center/cover no-repeat scroll;
-  background-color: #5d4037;
+  background: url('website%20hintergrund%20Sunshine%20runners%20allstars%20neu.png') center/cover no-repeat scroll;
+  background-color: #000000;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: transparent;
-  color: #5d4037;
+  color: #000000;
   min-height: 100vh;
   overflow-x: hidden;
   overscroll-behavior: none;
@@ -52,7 +52,7 @@ body {
 /* ===== Titelleiste ===== */
 .title-bar {
   width: 100%;
-  background-color: #5d4037;
+  background-color: #000000;
   padding: 14px 20px 4px 20px;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@ body {
 /* ===== Hero / Club-Bild ===== */
 .hero {
   width: 100%;
-  background-color: #5d4037;
+  background-color: #000000;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -119,14 +119,14 @@ body {
 
 .hero-placeholder p {
   font-size: 1rem;
-  color: #8d6e63;
+  color: #000000;
   font-style: italic;
   margin-bottom: 8px;
 }
 
 .hero-placeholder h1 {
   font-size: 2.5rem;
-  color: #4e342e;
+  color: #000000;
   text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
 }
 
@@ -140,7 +140,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 0;
-  background-color: #5d4037;
+  background-color: #000000;
   padding: 0;
   position: -webkit-sticky;
   position: sticky;
@@ -173,7 +173,7 @@ body {
 }
 
 .nav-link.active {
-  background-color: #4e342e;
+  background-color: #000000;
   border-bottom: 3px solid #ffcc80;
 }
 
@@ -202,13 +202,13 @@ body {
 
 /* ===== Seiten-Inhalt ===== */
 .page h2 {
-  color: #4e342e;
+  color: #000000;
   margin-bottom: 16px;
   font-size: 1.6rem;
 }
 
 .page p {
-  color: #5d4037;
+  color: #000000;
   line-height: 1.7;
   font-size: 1.05rem;
   margin-bottom: 12px;
@@ -271,7 +271,7 @@ body {
 }
 
 .video-caption {
-  color: #4e342e;
+  color: #000000;
   font-size: 0.95rem;
   text-align: center;
 }
@@ -299,7 +299,7 @@ body {
 
 .section-title {
   font-size: 1.3rem;
-  color: #4e342e;
+  color: #000000;
 }
 
 .news-unread-indicator {
@@ -343,7 +343,7 @@ body {
 }
 
 .media-date {
-  color: #6b4f46;
+  color: #000000;
   font-size: 0.95rem;
   margin-bottom: 8px;
 }
@@ -385,7 +385,7 @@ body {
 }
 
 .video-caption {
-  color: #4e342e;
+  color: #000000;
   font-size: 0.95rem;
   text-align: center;
 }
@@ -398,7 +398,7 @@ body {
 
 .page ol {
   padding-left: 24px;
-  color: #5d4037;
+  color: #000000;
 }
 
 .page ol li {
@@ -411,14 +411,14 @@ body {
 /* ===== Mitglieder-Seite ===== */
 .subtitle {
   font-weight: bold;
-  color: #8d6e63;
+  color: #000000;
   font-size: 1rem;
   margin-top: -12px;
   margin-bottom: 12px;
 }
 
 .rank-title {
-  color: #4e342e;
+  color: #000000;
   font-weight: normal;
   font-size: 1.1rem;
   margin-top: 22px;
@@ -475,7 +475,7 @@ body {
   border: none;
   font-size: 1.4rem;
   line-height: 1;
-  color: #8d6e63;
+  color: #000000;
   padding: 0 4px;
   cursor: pointer;
   flex-shrink: 0;
@@ -516,7 +516,7 @@ body {
 }
 
 .member-detail-inner p {
-  color: #5d4037;
+  color: #000000;
   margin: 0 0 10px;
 }
 
@@ -535,7 +535,7 @@ body {
 
 .member-quote {
   font-style: italic;
-  color: #6b4f46;
+  color: #000000;
   text-align: center;
   margin: 0 0 10px;
 }
@@ -596,7 +596,7 @@ body {
 }
 
 .week-plan th {
-  background-color: #5d4037;
+  background-color: #000000;
   color: white;
   padding: 12px 8px;
   text-align: center;
@@ -610,20 +610,20 @@ body {
   vertical-align: top;
   min-height: 60px;
   font-size: 0.9rem;
-  color: #5d4037;
+  color: #000000;
 }
 
 .week-plan td.event {
   background-color: rgba(255, 204, 128, 0.3);
   font-weight: bold;
-  color: #4e342e;
+  color: #000000;
 }
 
 /* ===== Footer ===== */
 .footer {
   text-align: center;
   padding: 24px;
-  color: #8d6e63;
+  color: #000000;
   font-size: 0.9rem;
   position: relative;
   z-index: 1;
@@ -641,7 +641,7 @@ body {
 
 #visitor-count {
   font-weight: bold;
-  color: #5d4037;
+  color: #000000;
 }
 
 /* ===== Bewerbungs-Formular ===== */
@@ -655,7 +655,7 @@ body {
 }
 
 .admin-btn {
-  background-color: #8d6e63;
+  background-color: #000000;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -691,19 +691,19 @@ body {
 }
 
 .application-item h4 {
-  color: #4e342e;
+  color: #000000;
   margin-top: 0;
   margin-bottom: 8px;
 }
 
 .application-item p {
-  color: #5d4037;
+  color: #000000;
   margin: 6px 0;
   font-size: 0.95rem;
 }
 
 .application-item strong {
-  color: #4e342e;
+  color: #000000;
 }
 
 .form-group {
@@ -714,7 +714,7 @@ body {
 
 .form-group label {
   font-weight: bold;
-  color: #4e342e;
+  color: #000000;
   margin-bottom: 8px;
   font-size: 1rem;
 }
@@ -728,7 +728,7 @@ body {
   border-radius: 6px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
-  color: #5d4037;
+  color: #000000;
   background-color: #faf9f8;
 }
 
@@ -737,7 +737,7 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #5d4037;
+  border-color: #000000;
   background-color: #fff;
   box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.1);
 }
@@ -749,7 +749,7 @@ body {
 
 .form-hint {
   font-size: 0.8rem;
-  color: #8d6e63;
+  color: #000000;
   margin-top: 4px;
 }
 
@@ -773,7 +773,7 @@ body {
 }
 
 .submit-btn {
-  background-color: #5d4037;
+  background-color: #000000;
   color: white;
   padding: 12px 30px;
   border: none;
@@ -785,7 +785,7 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: #4e342e;
+  background-color: #000000;
   transform: translateY(-2px);
 }
 
@@ -809,7 +809,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #4e342e;
+  background-color: #000000;
   color: white;
   padding: 16px 24px;
   display: flex;
@@ -844,7 +844,7 @@ body {
 
 .cookie-btn.accept {
   background-color: #ffcc80;
-  color: #4e342e;
+  color: #000000;
 }
 
 .cookie-btn.accept:hover {
@@ -904,7 +904,7 @@ body {
 }
 
 .event-card-title {
-  color: #4e342e;
+  color: #000000;
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 1.3rem;
@@ -918,7 +918,7 @@ body {
 }
 
 .event-subtitle {
-  color: #5d4037;
+  color: #000000;
   margin: 18px 0 6px 0;
   font-size: 1.1rem;
 }
@@ -934,7 +934,7 @@ body {
 .event-highlight {
   margin-top: 22px !important;
   font-size: 1.1rem !important;
-  color: #4e342e !important;
+  color: #000000 !important;
   font-weight: bold;
 }
 
@@ -987,7 +987,7 @@ body {
 }
 
 .note-title {
-  color: #5d4037;
+  color: #000000;
   font-family: 'Comic Sans MS', 'Segoe Print', cursive;
   font-size: 1.7rem;
   margin: 0 0 12px 0;
@@ -1001,7 +1001,7 @@ body {
 }
 
 .note-list li {
-  color: #5d4037;
+  color: #000000;
   font-family: 'Comic Sans MS', 'Segoe Print', cursive;
   font-size: 1.05rem;
   line-height: 38px;
@@ -1014,6 +1014,6 @@ body {
   content: "•";
   position: absolute;
   left: 4px;
-  color: #8d6e63;
+  color: #000000;
 }
 
