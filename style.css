@@ -570,6 +570,10 @@ body {
   flex: 1;
 }
 
+.outfit-text p {
+  margin-bottom: 12px;
+}
+
 .outfit-image {
   flex-shrink: 0;
   background-color: transparent;
