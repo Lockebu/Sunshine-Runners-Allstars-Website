@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = open ? '▴' : '▾';
       if (open && target.id === 'news') {
         try {
-          localStorage.setItem('sunshine-news-read-2026-10-04', 'true');
+          localStorage.setItem('sunshine-news-read-2026-10-06', 'true');
         } catch (error) {
           // Keep the indicator visible if browser storage is unavailable.
         }
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newsIndicator = document.getElementById('news-unread-indicator');
   if (newsIndicator) {
     try {
-      newsIndicator.hidden = localStorage.getItem('sunshine-news-read-2026-10-04') === 'true';
+      newsIndicator.hidden = localStorage.getItem('sunshine-news-read-2026-10-06') === 'true';
     } catch (error) {
       newsIndicator.hidden = false;
     }
