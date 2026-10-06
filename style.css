@@ -571,7 +571,7 @@ body {
 }
 
 .outfit-text p {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .outfit-image {
@@ -584,7 +584,6 @@ body {
   max-width: 350px;
   height: auto;
   border-radius: 10px;
-  mix-blend-mode: multiply;
 }
 
 /* ===== Kalender / Wochenplan ===== */
