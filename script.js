@@ -34,28 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = target.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
       btn.textContent = open ? '▴' : '▾';
-      if (open && target.id === 'news') {
+      const indicator = document.getElementById(`${target.id}-unread-indicator`);
+      if (open && indicator) {
         try {
-          localStorage.setItem('sunshine-news-read', target.dataset.latest || '');
+          localStorage.setItem(`sunshine-${target.id}-read`, target.dataset.latest || '');
         } catch (error) {
           // Keep the indicator visible if browser storage is unavailable.
         }
-        const indicator = document.getElementById('news-unread-indicator');
-        if (indicator) indicator.hidden = true;
+        indicator.hidden = true;
       }
     });
   });
 
-  const newsIndicator = document.getElementById('news-unread-indicator');
-  const newsContent = document.getElementById('news');
-  if (newsIndicator && newsContent) {
-    const latest = newsContent.dataset.latest || '';
+  document.querySelectorAll('.section-content[data-latest]').forEach(content => {
+    const indicator = document.getElementById(`${content.id}-unread-indicator`);
+    if (!indicator) return;
+    const latest = content.dataset.latest || '';
     try {
-      newsIndicator.hidden = localStorage.getItem('sunshine-news-read') === latest;
+      indicator.hidden = localStorage.getItem(`sunshine-${content.id}-read`) === latest;
     } catch (error) {
-      newsIndicator.hidden = false;
+      indicator.hidden = false;
     }
-  }
+  });
 
   // Set yesterday date
   const y = new Date();

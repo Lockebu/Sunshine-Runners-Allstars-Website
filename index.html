@@ -201,7 +201,7 @@
 
   <!-- Hero / Club-Bild -->
   <header class="hero">
-    <img src="ClubBild4.0.png?v=2" alt="Mitglieder der Sunshine Runners Allstars reiten gemeinsam auf ihren Pferden durch Jorvik in Star Stable Online" class="hero-image">
+    <img src="newClubStartBild2.0.jpeg" alt="Mitglieder der Sunshine Runners Allstars mit ihren Pferden in Star Stable Online" class="hero-image">
   </header>
 
   <!-- Braune Menüleiste -->
@@ -307,9 +307,18 @@
       <div class="section">
         <div class="section-header">
           <strong class="section-title">Videos</strong>
+          <span id="videos-unread-indicator" class="news-unread-indicator" role="status" aria-label="Neues Video"></span>
           <button class="toggle-btn" data-target="videos" aria-expanded="false">▾</button>
         </div>
-        <div id="videos" class="section-content">
+        <div id="videos" class="section-content" data-latest="2026-10-16">
+          <p class="media-date">Datum: 16.10.2026</p>
+          <div class="video-gallery">
+            <video controls preload="metadata" playsinline>
+              <source src="oneDaywithUsVideo.mp4" type="video/mp4">
+              Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+            <p class="video-caption">One day with us - Einen Tag mit uns</p>
+          </div>
           <p class="media-date">Datum: 02.09.2026</p>
           <div class="video-gallery">
             <video controls preload="metadata" playsinline>
